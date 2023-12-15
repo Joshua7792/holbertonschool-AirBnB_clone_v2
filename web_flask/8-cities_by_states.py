@@ -7,31 +7,23 @@ from models import storage
 from models.state import State
 from models.city import City
 
+
 app = Flask(__name__)
 
 
 @app.route('/states_list', strict_slashes=False)
 def states_list():
-    """ Route taht displays the html page of
-    a list of states objects sorted by name
-    """
-    states_li = storage.all(State).values()
-    return render_template('7-states_list.html', states=states_li)
-
-
-@app.route('/cities_by_states', strict_slashes=False)
-def cities_by_states():
-    """ Route that display a HTML page with a list of cities
-    objects sorted by name """
-    city_li = storage.all(State).values()
-    return render_template('8-cities_by_states.html', states=city_li)
+    """Display a HTML page with a list of all State objects."""
+    states = storage.all("State").values()
+    sorted_states = sorted(states, key=lambda state: state.name)
+    return render_template('7-states_list.html', states=sorted_states)
 
 
 @app.teardown_appcontext
-def teardown_appcontext(exception):
-    """After each request, remove the SQLAlchemy Session"""
+def close_storage(exc):
+    """Remove the current SQLAlchemy Session."""
     storage.close()
 
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
