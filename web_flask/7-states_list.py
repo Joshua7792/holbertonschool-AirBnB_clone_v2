@@ -12,8 +12,10 @@ Routes:
     /number_odd_or_even/<n>: Displays an HTML page only if <n> is an integer.
         - States whether <n> is even or odd in the body.
 """
-from flask import Flask, render_template
+from flask import Flask
+from flask import render_template
 from models import storage
+from models.state import State
 
 
 app = Flask(__name__)
