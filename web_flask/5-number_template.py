@@ -60,13 +60,6 @@ def number_template(n):
     """Displays an HTML page only if <n> is an integer."""
     return render_template("5-number.html", n=n)
 
-@app.template_filter('odd_or_even')
-def odd_or_even_filter(n):
-    if n % 2 == 0:
-        return 'even'
-    else:
-        return 'odd'
-
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
