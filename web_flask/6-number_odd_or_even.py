@@ -10,7 +10,7 @@ Routes:
     /number/<n>: Displays 'n is a number' only if <n> is an integer.
     /number_template/<n>: Displays an HTML page only if <n> is an integer.
     /number_odd_or_even/<n>: Displays an HTML page only if <n> is an integer.
-        - States whether <n> is even or odd in the body.
+    - States whether <n> is even or odd in the body.
 """
 from flask import Flask
 from flask import render_template
@@ -67,6 +67,7 @@ def number_template(n):
 def number_odd_or_even(n):
     """Displays States whether <n> is odd or even in the body"""
     return render_template("6-number_odd_or_even.html", n=n)
+
 
 @app.route("/number_odd_or_even/<int:n>", strict_slashes=False)
 def number_odd_or_even(n):
