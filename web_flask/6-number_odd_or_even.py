@@ -68,6 +68,12 @@ def number_odd_or_even(n):
     """Displays States whether <n> is odd or even in the body"""
     return render_template("6-number_odd_or_even.html", n=n)
 
+@app.route("/number_odd_or_even/<int:n>", strict_slashes=False)
+def number_odd_or_even(n):
+    """Displays States whether <n> is odd or even in the body"""
+    odd_or_even = "odd" if n % 2 else "even"
+    return render_template("6-number_odd_or_even.html", n=n, odd_or_even=odd_or_even)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
