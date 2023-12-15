@@ -1,70 +1,125 @@
-AirBnB clone - Web framework
+# Flask Web Application Tasks
 
-# GENERAL TOPICS
+This document outlines a series of tasks for building and running Flask web applications.
 
-1. What is a Web Framework:
-   A web framework is a software framework designed to aid the development of web applications including web services, web resources, and web APIs. It provides a structured way to build, organize, and maintain web applications by offering reusable code, enforcing best practices, and simplifying common tasks.
+## 0. Hello Flask!
 
-2. How to build a web framework with Flask:
-   Flask is a lightweight web framework for Python. To build a web framework with Flask, you need to:
+- **Description**: Write a script that starts a Flask web application.
+- **Requirements**:
+  - The application must listen on `0.0.0.0`, port `5000`.
+  - Define a route `/` to display "Hello HBNB!".
+  - Use `strict_slashes=False` in your route definition.
+- **Repository**: holbertonschool-AirBnB_clone_v2
+- **Directory**: web_flask
+- **File**: `0-hello_route.py`, `__init__.py`
 
-- Install Flask: pip install flask
-- Create a Python script (e.g., app.py)
-- Import Flask and create an instance:
+## 1. HBNB
 
-  from flask import Flask
-  app = Flask(**name**)
+- **Description**: Modify the Flask web application.
+- **Requirements**:
+  - Add a new route `/hbnb` to display "HBNB".
+- **Repository**: holbertonschool-AirBnB_clone_v2
+- **Directory**: web_flask
+- **File**: `1-hbnb_route.py`
 
-3.  How to define routes in Flask:
-    In Flask, routes are defined using the @app.route() decorator. For example:
+## 2. C is fun!
 
-        @app.route('/')
-        def home():
-        return 'Hello, World!'
+- **Description**: Expand the Flask web application.
+- **Requirements**:
+  - Add a new route `/c/<text>` to display "C " followed by the value of `text` (replace underscore `_` symbols with a space).
+- **Repository**: holbertonschool-AirBnB_clone_v2
+- **Directory**: web_flask
+- **File**: `2-c_route.py`
 
-4.  What is a route:
-    A route is a URL pattern mapped to a function that should be executed when the pattern is matched. It defines how the application responds to a specific HTTP request.
+## 3. Python is cool!
+- **Description**: Improve the Flask web application with Python features.
+- **Requirements**:
+  - Add a new route `/python/<text>` to display "Python " followed by the value of `text` (replace underscore `_` symbols with a space).
+  - Define a default value of `is_cool` to be "is cool".
+- **Repository**: holbertonschool-AirBnB_clone_v2
 
-5.  How to handle variables in a route:
-    You can include variable parts in a route URL by enclosing them in < >. For example:
+## 4. Is it a number?
+- **Description**: Make sure all inputs are numbers before processing them. If not, return an error message.
+- **Requirements**:
+  - Add a new route `/number/<n>` to display "n is a number" only if `n` is an integer.
+- **Repository**: holbertonschool-AirBnB_clone_v2
 
-        @app.route('/user/<username>')
-        def show_user_profile(username):
-        return 'User %s' % username
+## 5. Number template
+- **Description**: Improve the Flask web application with HTML templates.
+- **Requirements**:
+  - Add a new route `/number_template/<n>` to display an HTML page only if `n` is an integer.
+  - Use the `templates/5-number.html` template to display the number.
 
-6.  What is a template:
-    In the context of web development, a template is a file that contains a mix of HTML, variables, and control structures (e.g., loops, conditions). Templates are used to dynamically generate HTML pages with data from the server.
+## 6. Odd or even?
+- **Description**: Improve the Flask web application with HTML templates.
+- **Requirements**:
+  - Add a new route `/number_odd_or_even/<n>` to display an HTML page only if `n` is an integer.
+  - Use the `templates/6-number_odd_or_even.html` template to display the number.
 
-7.  How to create an HTML response in Flask by using a template:
-    You can use the render_template function to render an HTML template. First, create a templates folder in your project and add HTML files. Then, use the templates in your routes:
+## 7. Improve engines
+- **Description**: Improve the Flask web application with database storage.
+- **Requirements**:
+  - Update `FileStorage` to work with DBStorage.
+  - Update `__init__.py` to use `DBStorage` by default.
+  - Update `index.html` to display the number of `State` and `City` objects in storage.
 
-        from flask import render_template
+## 8. List of states
+- **Description**: Write a script for a Flask web application with more complex rendering.
+- **Requirements**:
+  - Implement `/states_list` to display an HTML page like `7-index.html`.
+  - Copy necessary CSS and image files to the appropriate directories.
+  - Load `State` objects from DBStorage and sort them by name.
 
-        @app.route('/hello/<name>')
-        def hello(name=None):
-        return render_template('hello.html', name=name)
+## 9. Cities by states
+- **Description**: Write a script for a Flask web application with more complex rendering.
+- **Requirements**:
+  - Implement `/cities_by_states` to display an HTML page like `8-cities_by_states.html`.
+  - Copy necessary CSS and image files to the appropriate directories.
+  - Load `State` and `City` objects from DBStorage and sort them by name.
 
-8.  How to create a dynamic template (loops, conditions…):
-    Inside your HTML template, you can use Jinja2 syntax, which Flask uses for templating. For example, using a loop:
+## 10. States and State
+- **Description**: Write a script for a Flask web application with more complex rendering.
+- **Requirements**:
+  - Implement `/states` and `/states/<id>` to display an HTML page like `9-states.html`.
+  - Copy necessary CSS and image files to the appropriate directories.
+  - Load `State` and `City` objects from DBStorage and sort them by name.
 
-        <ul>
-            {% for item in items %}
-                <li>{{ item }}</li>
-            {% endfor %}
-        </ul>
+## 11. HBNB filters
 
-9.  How to display in HTML data from a MySQL database:
-    To display data from a MySQL database, you need to connect Flask to the database (e.g., using Flask-SQLAlchemy). Fetch data from the database in your route and pass it to the template:
+- **Description**: Write a script for a Flask web application with more complex rendering.
+- **Requirements**:
+  - Implement `/hbnb_filters` to display a complex HTML page like `6-index.html`.
+  - Copy necessary CSS and image files to the appropriate directories.
+  - Load State, City, and Amenity objects from DBStorage and sort them by name.
+- **Repository**: holbertonschool-AirBnB_clone_v2
+- **File**: `10-hbnb_filters.py`, `templates/10-hbnb_filters.html`
 
-        from flask import render_template
-        from flask_sqlalchemy import SQLAlchemy
+### Resources
 
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://user:password@localhost/db_name'
-        db = SQLAlchemy(app)
+- [What is a Web Framework?](#)
+- [Flask Documentation](#)
+- [Jinja Template Documentation](#)
 
-        @app.route('/users')
-        def show_users():
-            users = User.query.all()
-            return render_template('users.html', users=users)
+### Learning Objectives
 
-In the template (users.html), you can then use a loop to display user data.
+- Understanding of web frameworks.
+- Building a web framework with Flask.
+- Defining routes in Flask.
+- Creating dynamic templates.
+- Displaying data from a MySQL database in HTML.
+
+### Requirements
+
+#### Python Scripts
+
+- Use Python 3.8.5.
+- Follow PEP 8 style guidelines.
+- All files must end with a new line.
+- All modules, classes, and functions must include documentation.
+
+#### HTML/CSS Files
+
+- All files should end with a new line.
+- Follow W3C validation standards.
+- Store CSS files in the `styles` folder and images in the `images` folder.
+- Avoid the use of `!important` and IDs in CSS.
