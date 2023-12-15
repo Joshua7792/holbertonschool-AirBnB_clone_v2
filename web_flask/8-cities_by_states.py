@@ -9,19 +9,18 @@ from models.state import State
 
 
 app = Flask(__name__)
-
-
-@app.route('/cities_by_states', strict_slashes=False)
-def cities_by_states():
-    """Display a HTML page with a list of States and their Cities."""
-    states = storage.all(State).values()
-    return render_template('8-cities_by_states.html', states=states)
+app.url_map.strict_slashes = False
 
 
 @app.teardown_appcontext
-def teardown_db(exception):
-    """Close the SQLAlchemy session."""
+def teardown(self):
     storage.close()
+
+
+@app.route('/cities_by_states')
+def cities_by_states():
+    states = storage.all(State)
+    return render_template('8-cities_by_states.html', states=states)
 
 
 if __name__ == '__main__':
