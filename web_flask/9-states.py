@@ -18,9 +18,8 @@ def teardown(self):
 
 @app.route('/states')
 def states():
-    states = storage.all(State)
-    return render_template('9-states.html', states=states)
-
+    states = storage.all(State).values()
+    return render_template('9-states.html', states=states, state=None)
 
 @app.route('/states/<id>')
 def states_id(id):
